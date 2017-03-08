@@ -18,7 +18,7 @@ double posynomial_slow(int n,double *a,double x)
 		double t=1;
 		for (int j=0;j<i;j++)
 			t = t/x;
-		sum +=  x*a[i];
+		sum +=  t*a[i];
 	}
 	return sum;
 }
