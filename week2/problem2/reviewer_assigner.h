@@ -4,12 +4,14 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <set>
 using std::ifstream;
 using std::string;
 using std::vector;
 using std::pair;
 using std::ofstream;
 using std::endl;
+using std::set;
 
 class ReviewerAssigner
 {

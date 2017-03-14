@@ -19,14 +19,16 @@ void ReviewerAssigner::output()
 	{
 		fout<<"Homework Reviewer for ("<<list[i].first.c_str()<<")"<<list[i].second.c_str()<<":"<<endl;
 		int cnt=0;
+		set<int> S;
 		while (cnt<3)
 		{
 			int index = rand()%list.size();
-			if (index == i)
+			if (index == i || S.find(index)!=S.end())
 			{
 				continue;
 			}else
 			{
+				S.insert(index);
 				fout<<">>#"<<cnt+1<<" ("<<list[index].first.c_str()<<") "<<list[index].second.c_str()<<endl;
 				cnt++;
 			}
