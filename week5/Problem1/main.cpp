@@ -1,4 +1,4 @@
-#include"graph.h"
+#include"mst.h"
 #include<iostream>
 #include<cstdio>
 #include<cstring>
@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	Graph G;
+	MST G;
 	for (int i=0;i<10;i++)
 	{
 		for (int j=0;j<20;j++)
@@ -21,7 +21,7 @@ Label:
 			printf("Add Point(%d,%d)...\n",pt.getx(),pt.gety());
 			G.AddPoint(pt);
 		}
-		printf("MST is :%lf\n",G.Kruskal());
+		printf("MST is :%lf\n",G.ComputeMST());
 		G.Clear();
 	}
 }

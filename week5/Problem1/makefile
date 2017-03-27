@@ -2,13 +2,14 @@ cc = g++ -g
 exe = main
 target: $(exe)
 
-main : main.o graph.o point.o
-	$(cc) main.o graph.o point.o -o main
+main : main.o graph.o point.o mst.o
+	$(cc) main.o graph.o point.o mst.o -o main
 
 graph.o : graph.cpp graph.h
-	$(cc) main.cpp -o main.o
 
 point.o : point.cpp point.h
+
+mst.o : mst.cpp mst.h
 
 main.o : main.cpp
 
