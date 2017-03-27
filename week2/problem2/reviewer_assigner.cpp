@@ -12,12 +12,10 @@ void ReviewerAssigner::load()
 	fin.close();
 }
 
-void ReviewerAssigner::output()
+void ReviewerAssigner::choose()
 {
-	ofstream fout("Reviewer.txt");
 	for (int i=0;i<(int)list.size();i++)
 	{
-		fout<<"Homework Reviewer for ("<<list[i].first.c_str()<<")"<<list[i].second.c_str()<<":"<<endl;
 		int cnt=0;
 		set<int> S;
 		while (cnt<3)
@@ -29,11 +27,23 @@ void ReviewerAssigner::output()
 			}else
 			{
 				S.insert(index);
-				fout<<">>#"<<cnt+1<<" ("<<list[index].first.c_str()<<") "<<list[index].second.c_str()<<endl;
 				cnt++;
 			}
 		}
-		fout<<endl;
+		reviewer.push_back(S);
+	}
+}
+
+void ReviewerAssigner::output()
+{
+	ofstream fout("Reviewer.txt");
+	for (int i=0;i<(int)list.size();i++)
+	{
+		fout<<"Homeword Reviewers for "<<list[i].first<<endl;
+		for (set<int> :: iterator it1 =reviewer[i].begin();it1!=reviewer[i].end();it1++)
+		{
+			fout<<list[*it1].first<<endl;
+		}
 	}
 	fout.close();
 }

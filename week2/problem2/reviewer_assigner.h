@@ -17,9 +17,11 @@ class ReviewerAssigner
 {
 	private:
 		vector<pair<string,string> > list;
+		vector<set<int> > reviewer;
 	public:
 		void load();
 		void output();
+		void choose();
 };
 
 #endif 
