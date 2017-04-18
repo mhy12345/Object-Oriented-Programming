@@ -1,8 +1,8 @@
-#include "tree.h"
 #include "mst.h"
 using std::make_pair;
-bool MST::cmp_edge(pair<double,pair<int,int> > e1,
-		pair<double,pair<int,int> > e2)
+typedef pair<double,pair<int,int> > edge_t;
+bool MST::cmp_edge(edge_t e1,
+		edge_t e2)
 {
 	return e1.first<e2.first;
 }
@@ -14,8 +14,7 @@ int MST::get_fa(int x)
 
 double MST::ComputeMST()
 {
-	T.Clear();
-	vector<pair<double,pair<int,int> > > edge;
+	vector<edge_t > edge;
 	for (int i=0;i<(int)list.size();i++)
 		for (int j=0;j<(int)list.size();j++)
 			edge.push_back(make_pair(distance(list[i],list[j]),make_pair(i,j)));
@@ -32,10 +31,8 @@ double MST::ComputeMST()
 		{
 			uf[get_fa(x)] = get_fa(y);
 			ans += edge[i].first;
-			T.Add_Edge(edge[i].second.first,edge[i].second.second,edge[i].first);
 		}
 	}
-	T.Build_Tree();
 	delete[] uf;
 	return ans;
 }

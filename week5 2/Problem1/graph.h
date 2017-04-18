@@ -9,7 +9,7 @@ using std::vector;
 using std::pair;
 class Graph
 {
-	public:
+	protected:
 		vector<Point> list;
 	public:
 		void set_list(vector<Point> list) {

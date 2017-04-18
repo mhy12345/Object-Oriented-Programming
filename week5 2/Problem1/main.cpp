@@ -1,5 +1,4 @@
 #include"mst.h"
-#include"kmst.h"
 #include<iostream>
 #include<cstdio>
 #include<cstring>
@@ -14,10 +13,12 @@ int main()
 		for (int j=0;j<20;j++)
 		{
 			set<Point> S;
-Label:
-			Point pt = Point(rand()%100,rand()%100);
-			if (S.find(pt) != S.end())
-				goto Label;
+			Point pt(0,0);
+		   	do {
+				pt = Point(rand()%100,rand()%100);
+				if (S.find(pt) == S.end())
+					break;
+			}while (true);
 			S.insert(pt);
 			printf("Add Point(%d,%d)...\n",pt.getx(),pt.gety());
 			G.AddPoint(pt);
@@ -25,6 +26,4 @@ Label:
 		printf("MST is :%lf\n",G.ComputeMST());
 		G.Clear();
 	}
-	KMST GG(G);
-	GG.Get_Kth(10);
 }
