@@ -1,13 +1,10 @@
 #include "Matrix.h"
 #include <iostream>
 #include <exception>
-using std::endl;
-using std::cout;
-using std::ifstream;
-using std::ofstream;
-using std::runtime_error;
+#include <fstream>
+using namespace std;
 
-Matrix::Matrix(const string& filename)
+Matrix::Matrix(const char* filename)
 {
 	load(filename);
 }
@@ -46,7 +43,7 @@ void Matrix::display_product()const
 	display();
 }
 
-void Matrix::load(const string& filename)
+void Matrix::load(const char* filename)
 {
 	if (!mat)
 		free(mat),mat=NULL;
@@ -58,8 +55,9 @@ void Matrix::load(const string& filename)
 	for (int i=0;i<n;i++)
 		for (int j=0;j<m;j++)
 			fin>>mat[i*m+j];
+	fin.close();
 }
-void Matrix::save_product(const string& filename)
+void Matrix::save_product(const char* filename)
 {
 	ofstream fout(filename);
 	fout<<n<<" "<<m<<endl;

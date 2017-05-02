@@ -3,9 +3,6 @@
 #include <cstdlib>
 #include <memory>
 #include <cassert>
-#include <fstream>
-#include <string>
-using std::string;
 
 class Matrix
 {
@@ -17,7 +14,7 @@ class Matrix
 		Matrix(int n,int m):n(n),m(m){
 			mat = (int*)calloc(n*m,sizeof(int));
 		}
-		Matrix(const string &filename);
+		Matrix(const char* filename);
 		~Matrix(){
 			if (mat)
 				free(mat);
@@ -25,8 +22,8 @@ class Matrix
 		const Matrix multiply(const Matrix &bb)const;//矩阵乘法
 		void display_product()const;
 		void display()const;
-		void load(const string& filename);//从文件导入
-		void save_product(const string& filename);//保存至文件
+		void load(const char* filename);//从文件导入
+		void save_product(const char* filename);//保存至文件
 };
 
 #endif
