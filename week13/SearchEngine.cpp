@@ -2,7 +2,9 @@
 #include "KMPSearchStrategy.h"
 #include "KRSearchStrategy.h"
 #include <cstdio>
-const int SearchEngine::maxn = 1000;
+#include <ctime>
+#include <cstring>
+const int SearchEngine::maxn = 1000000;
 const int SearchEngine::maxm = 30;
 
 SearchEngine::SearchEngine(StrategyName KR)
@@ -42,18 +44,17 @@ void SearchEngine::load_match(const char* filename)
 
 void SearchEngine::load_pattern(const char* filename)
 {
+	clock_t begin = clock();
 	FILE *fin = fopen(filename,"r");
-	int n = 0;
-	char ch;
-	while (n<maxn && ~(ch = fgetc(fin)))
-		if (ch!=' ' && ch!='\n' && ch!='\r' && ch!='\t')
-			pattern[n++] = ch;
+	while (fgets(pattern,maxn,fin))
+	{
+		pattern[strlen(pattern)-1] = '\0';
+		SS->compile(pattern);
+		printf("Match pattern :%s\n",pattern);
+		printf("Matches count:%d\n",SS->match(match));
+	}
 	fclose(fin);
+	clock_t end = clock();
+	printf("Time usage: %lums\n",end-begin);
 }
 
-void SearchEngine::do_search()//运行匹配
-{
-	SS->compile(pattern);
-	//SS->print();
-	printf("Matches count:%d\n",SS->match(match));
-}

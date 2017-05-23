@@ -16,6 +16,5 @@ class SearchEngine
 		void choose_strategy(StrategyName);
 		void load_match(const char* filename);//从文件读入原串
 		void load_pattern(const char* filename);//从文件读入模式串
-		void do_search();//运行匹配
 };
 #endif
