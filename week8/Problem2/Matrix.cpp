@@ -31,7 +31,7 @@ void Matrix::display()const
 	{
 		for (int j=0; j<m; j++)
 		{
-			cout<<mat[i*m+j]<<"\t";
+			cou<<mat[i*m+j]<<"\t";
 		}
 		cout<<endl;
 	}

@@ -72,6 +72,7 @@ bool OptRouter::mazeSearch()
 }
 void OptRouter::mazeBacktrace()
 {
+	//find which direction gives the best answer
 	pair<int,int> bstans = make_pair(m_row*m_col+1,1);
 	int bstid = -1;
 	for (int i=0;i<4;i++)
@@ -134,16 +135,16 @@ bool OptRouter::route(void)
 	else
 		return false;
 }
-void OptRouter::compXYIndex(int index,int &x,int &y,int &d)
+void OptRouter::compXYIndex(int index,int &x,int &y,int &d)//Decompose index into (x,y,d)
 {
 	d = index%4;
 	BaseRouter::compXYIndex(index/4,x,y);
 }
-int OptRouter::compIndex(int x,int y,int d)
+int OptRouter::compIndex(int x,int y,int d)//Compose (x,y,d) into index
 {
 	return BaseRouter::compIndex(x,y)*4+d;
 }
-bool OptRouter::valid(int x,int y)
+bool OptRouter::valid(int x,int y)//Check if the position is valid
 {
 	return x>=0 && y>=0 && x<m_col && y<m_row;
 }

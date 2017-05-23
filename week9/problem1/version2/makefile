@@ -21,7 +21,7 @@ $(LIB): $(lOBJECTS) $(HEADERS)
 	@echo "Now Compiling $< ..."
 	g++ -c $< -o $@
 clean:
-	rm *.o *.exe *.bak *.a
+	rm *.o *.exe 
 explain:
 	@echo "Lib Sources: $(lSOURCES)"
 	@echo "User Sources: $(sSOURCES)"
